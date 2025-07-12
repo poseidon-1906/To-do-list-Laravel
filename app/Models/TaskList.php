@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Factories\HasFactory; // Ajoutez cette ligne si vous utilisez les factories
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Tasks; // <-- C'EST CETTE LIGNE QUI EST CRUCIALE ICI
 
 class TaskList extends Model
 {
-    use HasFactory; // Ajoutez cette ligne si vous utilisez les factories
+    use HasFactory;
 
-    protected $table = 'lists'; // Spécifie le nom de la table si ce n'est pas la convention par défaut (task_lists)
-
+    protected $table = 'lists';
     protected $fillable = [
         'title',
         'description',
@@ -21,13 +21,11 @@ class TaskList extends Model
 
     public function tasks(): HasMany
     {
-        return $this->hasMany(Task::class);
+        return $this->hasMany(Tasks::class);
     }
 
     public function user(): BelongsTo
     {
-        // Correction ici : 'BelongsTo' avec une majuscule est incorrect.
-        // C'est '$this->belongsTo(...)' avec un 'b' minuscule.
         return $this->belongsTo(User::class);
     }
 }
