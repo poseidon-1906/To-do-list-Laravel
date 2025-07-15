@@ -118,14 +118,14 @@ export default function ListsIndex({ tasks, lists, filters, flash }: Props) {
         }
     };
 
-    const handleEdit = (task: Task) => {
-        setEditingTask(task);
+    const handleEdit = (tasks: Task) => {
+        setEditingTask(tasks);
         setData({
-            title: task.title,
-            description: task.description || '',
-            due_date: task.due_date || '',
-            list_id: task.list_id.toString(),
-            is_completed: task.is_completed,
+            title: tasks.title,
+            description: tasks.description || '',
+            due_date: tasks.due_date || '',
+            list_id: tasks.list_id.toString(),
+            is_completed: tasks.is_completed,
         });
         setIsOpen(true);
     };
@@ -293,34 +293,34 @@ export default function ListsIndex({ tasks, lists, filters, flash }: Props) {
                                 </tr>
                             </thead>
                             <tbody className="[&_tr:last-child]:border-0">
-                                {tasks.data.map((task) => (
-                                    <tr key={task.id} className="border-b transition-colors hover:bg-muted/60 data-[state=selected]:bg-muted">
-                                        <td className="h-12 px-4 align-middle font-medium">{task.title}</td>
-                                        <td className="h-12 px-4 align-middle max-w-[200px] truncate">{task.description || 'No Description'}</td>
+                                {tasks.data.map((tasks) => (
+                                    <tr key={tasks.id} className="border-b transition-colors hover:bg-muted/60 data-[state=selected]:bg-muted">
+                                        <td className="h-12 px-4 align-middle font-medium">{tasks.title}</td>
+                                        <td className="h-12 px-4 align-middle max-w-[200px] truncate">{tasks.description || 'No Description'}</td>
                                         <td className="p-4 align-middle">
                                             <div className="flex items-center gap-2">
                                                 <List className="h-4 w-4 text-muted-foreground" /> {/* Adjusted List icon size */}
-                                                <span>{task.list.title}</span> {/* Moved title here */}
+                                                <span>{tasks.list.title}</span> {/* Moved title here */}
                                             </div>
                                         </td>
                                         <td className="p-4 align-middle">
                                             <div className="flex items-center gap-2">
                                                 <Calendar className="h-4 w-4 text-muted-foreground"></Calendar>
-                                                {task.due_date ? new Date(task.due_date).toLocaleDateString() : (<span className="text-muted-foreground">No Due Date</span>)}
+                                                {tasks.due_date ? new Date(tasks.due_date).toLocaleDateString() : (<span className="text-muted-foreground">No Due Date</span>)}
                                             </div>
                                         </td>
                                         <td className="h-12 px-4 align-middle">
-                                            {task.is_completed ? (
+                                            {tasks.is_completed ? (
                                                 <CheckCircle className="h-5 w-5 text-green-500" />
                                             ) : (
                                                 <XCircle className="h-5 w-5 text-red-500" />
                                             )}
                                         </td>
                                         <td className="h-12 px-4 text-right align-middle">
-                                            <Button variant="ghost" size="icon" onClick={() => handleEdit(task)}>
+                                            <Button variant="ghost" size="icon" onClick={() => handleEdit(tasks)}>
                                                 <Pencil className="h-4 w-4" />
                                             </Button>
-                                            <Button variant="ghost" size="icon" onClick={() => handleDelete(task.id)} className="text-destructive hover:text-destructive/90">
+                                            <Button variant="ghost" size="icon" onClick={() => handleDelete(tasks.id)} className="text-destructive hover:text-destructive/90">
                                                 <Trash2 className="h-4 w-4" />
                                             </Button>
                                         </td>
