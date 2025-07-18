@@ -106,7 +106,7 @@ export default function ListsIndex({ lists, flash }: Props) { // Corrected synta
             <div className="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
                 {showToast && (
                     <div className={`fixed top-4 right-4 z-50 flex items-center gap-2 rounded-lg p-4 shadow-lg ${ // Corrected template literal syntax and gab to gap
-                        toastType === 'success' ? 'bg-red-500' : 'bg-red-500'}
+                        toastType === 'success' ? 'bg-green-500' : 'bg-red-500'}
                         text-white animate-in fade-in slide-in-from-top-5`}>
                         {toastType === 'success' ? (
                             <CheckCircle2 className="h-5 w-5" />) : (

@@ -92,7 +92,7 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Tasks $tasks)
+    public function update(Request $request, Tasks $task)
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
@@ -102,16 +102,16 @@ class TaskController extends Controller
             'is_completed' => 'boolean'
         ]);
 
-        $tasks->update($validated);
+        $task->update($validated);
         return redirect()->route('tasks.index')->with('success', 'Task Updated Successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Tasks $tasks)
+    public function destroy(Tasks $task)
     {
-        $tasks->delete();
+        $task->delete();
         return redirect()->route('tasks.index')->with('success', 'Task Deleted Successfully');
     }
 }

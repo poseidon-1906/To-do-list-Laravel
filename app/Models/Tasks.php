@@ -4,12 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use App\Models\Tasks;
-use Illuminate\Database\Eloquent\Factories\HasFactory; // Ajoutez cette ligne si vous utilisez les factories
+use Illuminate\Database\Eloquent\Factories\HasFactory; 
+use App\Models\TaskList; // Add this line to properly import TaskList
 
 class Tasks extends Model
 {
-    use HasFactory; // Ajoutez cette ligne si vous utilisez les factories
+    use HasFactory; 
 
     protected $fillable = [
         'title',
@@ -21,7 +21,6 @@ class Tasks extends Model
 
     public function list(): BelongsTo
     {
-        
         return $this->belongsTo(TaskList::class, 'list_id');
     }
 }

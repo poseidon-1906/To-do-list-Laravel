@@ -226,7 +226,7 @@ export default function ListsIndex({ tasks, lists, filters, flash }: Props) {
                             </div>
                             <div className="space-y-2">
                                 <Label htmlFor="list_id">List</Label>
-                                <Select value={data.list_id} onValueChange={(value) => setData('list_id', value)}> {/* Corrected onChange to onValueChange */}
+                                <Select value={data.list_id} onValueChange={(value) => setData('list_id', value)}> {/* Added value prop to Select */}
                                     <SelectTrigger className="focus:ring-2 focus:ring-primary">
                                         <SelectValue placeholder="Select a list" />
                                     </SelectTrigger>
@@ -247,15 +247,16 @@ export default function ListsIndex({ tasks, lists, filters, flash }: Props) {
                                     className="focus:ring-2 focus:ring-primary">
                                 </Input>
                             </div>
-                            <div className="flex items-center space-x-2">
-                                <Input
-                                    id="is_completed"
-                                    type="checkbox"
-                                    checked={data.is_completed}
-                                    onChange={(e) => setData('is_completed', e.target.checked)}
-                                    className="h-4 w-4 rounded border-gray-350 focus:ring-2 focus:ring-primary"
-                                />
-                                <Label htmlFor="is_completed">Completed</Label>
+                           <div className="flex items-center space-x-2">
+                               
+                                    <Input
+                                        id="is_completed"
+                                        type="checkbox"
+                                        checked={data.is_completed}
+                                        onChange={(e) => setData('is_completed', e.target.checked)}
+                                        className="h-4 w-4 rounded border-gray-350 focus:ring-2 focus:ring-primary"
+                                    />
+                                 <Label htmlFor="is_completed">Completed</Label>
                             </div>
                             <Button type="submit" disabled={processing} className="w-full bg-primary hover:bg-primary/90 text-white shadow-lg">
                                 {editingTask ? 'Update Task' : 'Create Task'}</Button>
