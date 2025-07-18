@@ -92,7 +92,7 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Tasks $task)
+    public function update(Request $request, Tasks $tasks)
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
@@ -109,7 +109,7 @@ class TaskController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Tasks $task)
+    public function destroy(Tasks $tasks)
     {
         $tasks->delete();
         return redirect()->route('tasks.index')->with('success', 'Task Deleted Successfully');
