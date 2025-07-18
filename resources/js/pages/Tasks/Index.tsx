@@ -197,7 +197,7 @@ export default function ListsIndex({ tasks, lists, filters, flash }: Props) {
                     <h1 className="text-3xl font-bold tracking-tight">Tasks</h1> <p className="text-muted-foreground mt-1">Manage your task and stay organize</p></div>
                 <Dialog open={isOpen} onOpenChange={setIsOpen}>
                     <DialogTrigger asChild>
-                        <Button className='bg-primary hover:bg-primary/90 text-white shadow-lg'>
+                        <Button className='bg-green-500 hover:bg-green-800 text-white shadow-lg transition-all duration-400 cursor-pointer'>
                             <Plus className="h-4 w-4 mr-2" />
                             New Task
                         </Button>
@@ -258,14 +258,14 @@ export default function ListsIndex({ tasks, lists, filters, flash }: Props) {
                                     />
                                  <Label htmlFor="is_completed">Completed</Label>
                             </div>
-                            <Button type="submit" disabled={processing} className="w-full bg-primary hover:bg-primary/90 text-white shadow-lg">
+                            <Button type="submit" disabled={processing} className="w-full bg-green-500 hover:bg-green-400 text-white shadow-lg cursor-pointer transition-all duration-300">
                                 {editingTask ? 'Update Task' : 'Create Task'}</Button>
                         </form>
                     </DialogContent>
                 </Dialog>
                 <div className="flex gap-4 mb-4">
                     <form onSubmit={handleSearch} className="relative flex-1">
-                        <Search className="absolute left-3 top-1/2 transform-translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                        <Search className="absolute left-3 top-1/3 transform-translate-y-1/2 h-4 w-4 text-muted-foreground" />
                         <Input placeholder="search tasks" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="pl-10" />
                     </form>
                     <Select onValueChange={handleFilterChange} value={completionFilter}> {/* Added value prop to Select */}
@@ -357,7 +357,7 @@ export default function ListsIndex({ tasks, lists, filters, flash }: Props) {
                                     key={page}
                                     variant={page === tasks.current_page ? 'default' : 'outline'}
                                     size="icon"
-                                    className={`h-6 w-6 ${tasks.current_page === page ? 'bg-primary text-white' : 'text-muted-foreground'}`}
+                                    className={`h-6 w-6 ${tasks.current_page === page ? 'bg-green-500 text-white' : 'text-muted-foreground'}`}
                                     onClick={() => handlePageChange(page)}
                                 >
                                     {page}
