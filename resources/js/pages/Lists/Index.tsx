@@ -88,7 +88,7 @@ export default function ListsIndex({ lists, flash }: Props) { // Corrected synta
     };
 
     const handleEdit = (list: List) => {
-        setEditingList(list); // Corrected typo: setEdittingList to setEditingList
+        setEditingList(list); 
         setData({
             title: list.title,
             description: list.description || '',
@@ -105,35 +105,35 @@ export default function ListsIndex({ lists, flash }: Props) { // Corrected synta
             <Head title="Lists" />
             <div className="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
                 {showToast && (
-                    <div className={`fixed top-4 right-4 z-50 flex items-center gap-2 rounded-lg p-4 shadow-lg ${ // Corrected template literal syntax and gab to gap
+                    <div className={`fixed top-4 right-4 z-50 flex items-center gap-2 rounded-lg p-4 shadow-lg ${ 
                         toastType === 'success' ? 'bg-green-500' : 'bg-red-500'}
                         text-white animate-in fade-in slide-in-from-top-5`}>
                         {toastType === 'success' ? (
                             <CheckCircle2 className="h-5 w-5" />) : (
                             <XCircle className="h-5 w-5" />
-                        )} {/* Moved <span> inside the conditional rendering */}
+                        )} 
                         <span>{toastMessage}</span>
                     </div>
                 )}
                 <div className="flex justify-between items-center">
                     <h1 className="text-2xl font-bold">Lists</h1>
-                    <Dialog open={isOpen} onOpenChange={setIsOpen}> {/* Corrected onOpenChanges to onOpenChange and moved closing tag */}
+                    <Dialog open={isOpen} onOpenChange={setIsOpen}> 
                         <DialogTrigger asChild>
-                            <Button onClick={() => setEditingList(null)}> {/* Added onClick to clear editingList when opening for new list */}
-                                <Plus className="h-4 w-4 mr-2" />
+                            <Button className="bg-green-500 hover:bg-green-800 text-white shadow-lg transition-all duration-400 cursor-pointer" onClick={() => setEditingList(null)}> 
+                                <Plus className="h-4 w-4" />
                                 New List
                             </Button>
                         </DialogTrigger>
                         <DialogContent>
-                            <DialogHeader> {/* DialogTitle should be inside DialogHeader or directly under DialogContent, not wrapping Header */}
-                                <DialogTitle>{editingList ? 'Edit List' : 'Create List'}</DialogTitle> {/* Corrected typo Creat to Create */}
+                            <DialogHeader> 
+                                <DialogTitle>{editingList ? 'Edit List' : 'Create List'}</DialogTitle> 
                             </DialogHeader>
                             <form onSubmit={handleSubmit} className="space-y-4">
                                 <div className="space-y-2">
                                     <Label htmlFor="title">Title</Label>
                                     <Input
                                         id="title"
-                                        value={data.title} // Corrected value from DataTransfer.title to data.title
+                                        value={data.title} 
                                         onChange={(e) => setData('title', e.target.value)}
                                         required
                                     />
